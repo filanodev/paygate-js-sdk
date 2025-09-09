@@ -26,7 +26,6 @@ beforeEach(() => {
   process.env = {
     ...originalEnv,
     PAYGATE_TOKEN: 'test-token',
-    PAYGATE_ENVIRONMENT: 'sandbox',
     NODE_ENV: 'test'
   }
 })
@@ -45,7 +44,6 @@ describe('Next.js Server Utils', () => {
     it('should create client with custom config', () => {
       const customConfig = {
         authToken: 'custom-token',
-        environment: 'production' as const,
         verifySSL: true
       }
 

@@ -31,7 +31,6 @@ import App from './App'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <PayGateProvider
     authToken="your-paygate-token"
-    environment="sandbox" // 'production' pour la production
     verifySSL={false} // pour le développement local uniquement
   >
     <App />

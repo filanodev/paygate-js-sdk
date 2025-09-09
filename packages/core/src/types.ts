@@ -1,14 +1,9 @@
 export type PayGateNetwork = 'FLOOZ' | 'TMONEY'
 
-export type PayGateEnvironment = 'sandbox' | 'production'
-
 export interface PayGateConfig {
   authToken: string
-  environment?: PayGateEnvironment
   verifySSL?: boolean
   timeout?: number
-  baseUrl?: string
-  baseUrlV2?: string
 }
 
 export interface InitiatePaymentParams {
@@ -20,13 +15,13 @@ export interface InitiatePaymentParams {
 }
 
 export interface GeneratePaymentUrlParams {
-  amount: number
-  identifier: string
-  description?: string
-  successUrl?: string
-  returnUrl?: string
-  phoneNumber?: string
-  network?: PayGateNetwork
+  token: string      // Jeton d'authentification
+  amount: number     // Montant de la transaction
+  identifier: string // Identifiant unique
+  description?: string // Détails de la transaction
+  url?: string       // URL de redirection après paiement
+  phone?: string     // Numéro de téléphone du client
+  network?: PayGateNetwork // Réseau (FLOOZ ou TMONEY)
 }
 
 export interface PaymentResponse {
@@ -41,14 +36,15 @@ export interface PaymentUrlResponse {
 }
 
 export interface PaymentStatus {
-  txReference: string
-  identifier?: string
-  status: number
-  amount?: number
-  phoneNumber?: string
-  paymentMethod?: PayGateNetwork
-  datetime?: string
-  message?: string
+  tx_reference: string          // Identifiant PayGateGlobal
+  identifier?: string           // Identifiant e-commerce
+  payment_reference?: string    // Code référence FLOOZ/TMoney
+  status: number               // Code d'état du paiement
+  amount?: number              // Montant payé
+  phone_number?: string        // Numéro de téléphone
+  payment_method?: string      // Méthode de paiement (FLOOZ, T-Money)
+  datetime?: string            // Date et heure du paiement
+  message?: string             // Message descriptif
 }
 
 export interface DisburseParams {

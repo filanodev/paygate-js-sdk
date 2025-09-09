@@ -32,7 +32,6 @@ Créez un fichier `.env` avec vos credentials PayGateGlobal :
 
 ```bash
 PAYGATE_TOKEN=your-paygate-token
-PAYGATE_ENVIRONMENT=sandbox
 ```
 
 ::: tip 💡 Obtenir un token
@@ -52,8 +51,7 @@ function App() {
   return (
     <PayGateProvider
       authToken={process.env.REACT_APP_PAYGATE_TOKEN}
-      environment="sandbox"
-    >
+          >
       <PaymentButton />
     </PayGateProvider>
   )
@@ -115,8 +113,7 @@ const app = createApp(App)
 
 app.use(PayGatePlugin, {
   authToken: import.meta.env.VITE_PAYGATE_TOKEN,
-  environment: 'sandbox'
-})
+  })
 
 app.mount('#app')
 ```
@@ -171,8 +168,7 @@ export default defineNuxtConfig({
   
   paygate: {
     authToken: process.env.PAYGATE_TOKEN,
-    environment: 'sandbox'
-  }
+      }
 })
 ```
 
@@ -232,8 +228,7 @@ export default function RootLayout({
       <body>
         <PayGateProvider
           authToken={process.env.NEXT_PUBLIC_PAYGATE_TOKEN!}
-          environment="sandbox"
-        >
+                  >
           {children}
         </PayGateProvider>
       </body>
@@ -292,8 +287,7 @@ import { PayGateClient } from '@filano/paygate-core'
 
 const client = new PayGateClient({
   authToken: 'your-paygate-token',
-  environment: 'sandbox'
-})
+  })
 
 // Initier un paiement
 const payment = await client.initiatePayment({

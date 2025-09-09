@@ -7,7 +7,6 @@ const PayGateContext = createContext<PayGateContextValue>({ client: null })
 export function PayGateProvider({ children, ...config }: PayGateProviderProps) {
   const client = useMemo(() => new PayGateClient(config), [
     config.authToken,
-    config.environment,
     config.verifySSL,
     config.timeout
   ])

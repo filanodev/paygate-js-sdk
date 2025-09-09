@@ -31,7 +31,6 @@ export default defineNuxtModule<ModuleOptions>({
   },
   defaults: {
     authToken: '',
-    environment: 'sandbox',
     verifySSL: true,
     autoImports: true,
     prefix: 'paygate',
@@ -43,7 +42,6 @@ export default defineNuxtModule<ModuleOptions>({
     // Ajouter les types runtime
     nuxt.options.runtimeConfig.public.paygate = {
       authToken: options.authToken,
-      environment: options.environment,
       verifySSL: options.verifySSL
     }
 

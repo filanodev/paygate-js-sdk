@@ -30,7 +30,6 @@ const app = createApp(App)
 
 app.use(PayGatePlugin, {
   authToken: 'your-paygate-token',
-  environment: 'sandbox', // 'production' pour la production
   verifySSL: false // pour le développement local uniquement
 })
 
@@ -47,8 +46,7 @@ import App from './App.vue'
 
 const app = createApp(App)
 const paygate = createPayGate({
-  authToken: 'your-paygate-token',
-  environment: 'sandbox'
+  authToken: 'your-paygate-token'
 })
 
 app.use(paygate)

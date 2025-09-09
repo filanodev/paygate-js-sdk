@@ -14,7 +14,6 @@ export * from './types'
 export type {
   PayGateConfig,
   PayGateNetwork,
-  PayGateEnvironment,
   InitiatePaymentParams,
   GeneratePaymentUrlParams,
   PaymentResponse,

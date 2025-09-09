@@ -7,7 +7,6 @@ global.fetch = vi.fn()
 
 const mockConfig: PayGateConfig = {
   authToken: 'test-token',
-  environment: 'sandbox',
   verifySSL: true
 }
 
@@ -229,25 +228,4 @@ describe('PayGateClient', () => {
     })
   })
 
-  describe('environment handling', () => {
-    it('should use production URLs for production environment', () => {
-      const prodClient = new PayGateClient({
-        authToken: 'token',
-        environment: 'production'
-      })
-
-      // Access private property for testing
-      expect((prodClient as any).baseUrl).toBe('https://api.paygateglobal.com')
-    })
-
-    it('should use sandbox URLs for sandbox environment', () => {
-      const sandboxClient = new PayGateClient({
-        authToken: 'token',
-        environment: 'sandbox'
-      })
-
-      // Access private property for testing
-      expect((sandboxClient as any).baseUrl).toBe('https://api.paygateglobal.com')
-    })
-  })
 })

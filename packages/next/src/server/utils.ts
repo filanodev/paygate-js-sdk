@@ -17,7 +17,6 @@ export function getServerPayGateClient(config?: PayGateConfig): PayGateClient {
   if (!_paygateClient) {
     const defaultConfig: PayGateConfig = {
       authToken: process.env.PAYGATE_TOKEN || '',
-      environment: (process.env.PAYGATE_ENVIRONMENT as any) || 'sandbox',
       verifySSL: process.env.NODE_ENV === 'production'
     }
     
@@ -149,7 +148,6 @@ export function createWebhookHandler(
 export function getPayGateEnvConfig(): PayGateConfig {
   return {
     authToken: process.env.PAYGATE_TOKEN || '',
-    environment: (process.env.PAYGATE_ENVIRONMENT as any) || 'sandbox',
     verifySSL: process.env.NODE_ENV === 'production'
   }
 }
@@ -162,9 +160,5 @@ export function ensurePayGateConfig(): void {
   
   if (!config.authToken) {
     throw new Error('PAYGATE_TOKEN variable d\'environnement requise')
-  }
-  
-  if (!['sandbox', 'production'].includes(config.environment)) {
-    throw new Error('PAYGATE_ENVIRONMENT doit être "sandbox" ou "production"')
   }
 }

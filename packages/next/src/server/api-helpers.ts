@@ -24,7 +24,6 @@ interface PayGateApiConfig extends PayGateConfig {
 export function createPayGateApiClient(config?: PayGateApiConfig): PayGateClient {
   const defaultConfig: PayGateConfig = {
     authToken: process.env.PAYGATE_TOKEN || '',
-    environment: (process.env.PAYGATE_ENVIRONMENT as any) || 'sandbox',
     verifySSL: process.env.NODE_ENV === 'production'
   }
 

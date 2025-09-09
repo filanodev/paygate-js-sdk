@@ -23,7 +23,6 @@ import { PayGateClient } from '@filano/paygate-core'
 
 const paygate = new PayGateClient({
   authToken: 'your-paygate-token',
-  environment: 'sandbox', // 'production' pour la production
   verifySSL: false // pour le développement local uniquement
 })
 
@@ -53,7 +52,6 @@ new PayGateClient(config: PayGateConfig)
 
 **PayGateConfig:**
 - `authToken: string` - Votre token d'authentification PayGate (obligatoire)
-- `environment?: 'sandbox' | 'production'` - Environnement (défaut: 'sandbox')
 - `verifySSL?: boolean` - Vérification SSL (défaut: true, false pour dev local)
 - `timeout?: number` - Timeout des requêtes en ms (défaut: 30000)
 

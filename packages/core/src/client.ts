@@ -20,8 +20,6 @@ import {
   validateNetwork,
   validateAmount,
   validateIdentifier,
-  isIdentifierFormat,
-  handleApiError,
   buildQueryParams
 } from './utils'
 
@@ -30,62 +28,112 @@ export class PayGateClient {
 
   constructor(config: PayGateConfig) {
     if (!config.authToken) {
-      throw new PayGateError('Auth token is required', 400, 'MISSING_AUTH_TOKEN')
+      throw new PayGateError('Token d\'authentification requis', 400)
     }
 
     this.config = {
       ...DEFAULT_CONFIG,
-      ...config,
-      baseUrl: config.baseUrl || PAYGATE_URLS[config.environment?.toUpperCase() as keyof typeof PAYGATE_URLS || 'SANDBOX'].API_V1,
-      baseUrlV2: config.baseUrlV2 || PAYGATE_URLS[config.environment?.toUpperCase() as keyof typeof PAYGATE_URLS || 'SANDBOX'].API_V2
+      ...config
     }
   }
 
   /**
-   * Initier un paiement direct via l'API
+   * Initier un paiement selon la documentation officielle PayGateGlobal
+   * URL: https://paygateglobal.com/api/v1/pay
+   * Méthode: POST
    */
   async initiatePayment(params: InitiatePaymentParams): Promise<PaymentResponse> {
     this.validateInitiatePaymentParams(params)
 
-    const data = {
+    // Structure exacte selon la documentation officielle
+    const payload = {
       auth_token: this.config.authToken,
       phone_number: normalizePhoneNumber(params.phoneNumber),
       amount: params.amount,
+      description: params.description || '',
       identifier: params.identifier,
-      network: params.network.toUpperCase(),
-      ...(params.description && { description: params.description })
+      network: params.network
     }
 
-    const response = await this.makeRequest('POST', '/pay', data)
+    const response = await this.makeRequest(PAYGATE_URLS.PAYMENT, payload)
     
     return {
       txReference: response.tx_reference,
       status: response.status,
-      message: this.getTransactionStatusMessage(response.status)
+      message: this.getStatusMessage(response.status)
     }
   }
 
   /**
-   * Générer une URL de paiement pour redirection
+   * Vérifier l'état d'un paiement par tx_reference
+   * URL: https://paygateglobal.com/api/v1/status
+   * Méthode: POST
    */
-  generatePaymentUrl(params: GeneratePaymentUrlParams): PaymentUrlResponse {
-    this.validateGeneratePaymentUrlParams(params)
+  async checkStatus(txReference: string): Promise<PaymentStatus> {
+    if (!txReference) {
+      throw new PayGateError('Référence de transaction requise', 400)
+    }
 
-    const paymentPageUrl = PAYGATE_URLS[this.config.environment.toUpperCase() as keyof typeof PAYGATE_URLS].PAYMENT_PAGE
+    const payload = {
+      auth_token: this.config.authToken,
+      tx_reference: txReference
+    }
+
+    const response = await this.makeRequest(PAYGATE_URLS.STATUS_V1, payload)
     
+    return {
+      ...response,
+      message: this.getStatusMessage(response.status)
+    }
+  }
+
+  /**
+   * Vérifier l'état d'un paiement par identifier
+   * URL: https://paygateglobal.com/api/v2/status
+   * Méthode: POST
+   */
+  async checkStatusByIdentifier(identifier: string): Promise<PaymentStatus> {
+    if (!identifier) {
+      throw new PayGateError('Identifiant requis', 400)
+    }
+
+    const payload = {
+      auth_token: this.config.authToken,
+      identifier: identifier
+    }
+
+    const response = await this.makeRequest(PAYGATE_URLS.STATUS_V2, payload)
+    
+    return {
+      ...response,
+      message: this.getStatusMessage(response.status)
+    }
+  }
+
+  /**
+   * Générer une URL de paiement
+   * URL: https://paygateglobal.com/v1/page
+   * Méthode: GET (Query String)
+   */
+  generatePaymentUrl(params: Omit<GeneratePaymentUrlParams, 'token'>): PaymentUrlResponse {
     const queryParams = {
       token: this.config.authToken,
       amount: params.amount,
       identifier: params.identifier,
-      ...(params.description && { description: params.description }),
-      ...(params.successUrl && { url: params.successUrl }),
-      ...(params.returnUrl && { url: params.returnUrl }),
-      ...(params.phoneNumber && { phone: normalizePhoneNumber(params.phoneNumber) }),
-      ...(params.network && { network: params.network.toUpperCase() })
+      description: params.description || '',
+      url: params.url || '',
+      phone: params.phone || '',
+      network: params.network || ''
     }
 
-    const url = `${paymentPageUrl}?${buildQueryParams(queryParams)}`
-    
+    // Filtrer les paramètres vides
+    const filteredParams = Object.fromEntries(
+      Object.entries(queryParams).filter(([_, value]) => value !== '')
+    )
+
+    const queryString = buildQueryParams(filteredParams)
+    const url = `${PAYGATE_URLS.PAYMENT_PAGE}?${queryString}`
+
     return {
       url,
       identifier: params.identifier
@@ -93,85 +141,16 @@ export class PayGateClient {
   }
 
   /**
-   * Vérifier le statut d'un paiement par référence PayGate
-   */
-  async checkPaymentStatus(txReference: string): Promise<PaymentStatus> {
-    if (!txReference) {
-      throw new PayGateError('Transaction reference is required', 400, 'MISSING_TX_REFERENCE')
-    }
-
-    const data = {
-      auth_token: this.config.authToken,
-      tx_reference: txReference
-    }
-
-    const response = await this.makeRequest('POST', '/status', data)
-    
-    return this.formatPaymentStatus(response)
-  }
-
-  /**
-   * Vérifier le statut d'un paiement par identifier personnalisé
-   */
-  async checkPaymentStatusByIdentifier(identifier: string): Promise<PaymentStatus> {
-    if (!identifier) {
-      throw new PayGateError('Identifier is required', 400, 'MISSING_IDENTIFIER')
-    }
-
-    const data = {
-      auth_token: this.config.authToken,
-      identifier: identifier
-    }
-
-    const response = await this.makeRequestV2('POST', '/status', data)
-    
-    return this.formatPaymentStatus(response)
-  }
-
-  /**
-   * Vérifier le statut d'un paiement (détecte automatiquement le type)
-   */
-  async checkStatus(reference: string): Promise<PaymentStatus> {
-    if (isIdentifierFormat(reference)) {
-      return this.checkPaymentStatusByIdentifier(reference)
-    } else {
-      return this.checkPaymentStatus(reference)
-    }
-  }
-
-  /**
-   * Effectuer un remboursement
-   */
-  async disburse(params: DisburseParams): Promise<PaymentResponse> {
-    this.validateDisburseParams(params)
-
-    const data = {
-      auth_token: this.config.authToken,
-      phone_number: normalizePhoneNumber(params.phoneNumber),
-      amount: params.amount,
-      reason: params.reason,
-      network: params.network.toUpperCase(),
-      ...(params.reference && { reference: params.reference })
-    }
-
-    const response = await this.makeRequest('POST', '/disburse', data)
-    
-    return {
-      txReference: response.tx_reference || response.reference,
-      status: response.status,
-      message: this.getTransactionStatusMessage(response.status)
-    }
-  }
-
-  /**
-   * Consulter les soldes
+   * Consulter votre solde FLOOZ et TMoney
+   * URL: https://paygateglobal.com/api/v1/check-balance
+   * Méthode: POST
    */
   async checkBalance(): Promise<Balance> {
-    const data = {
+    const payload = {
       auth_token: this.config.authToken
     }
 
-    const response = await this.makeRequest('POST', '/check-balance', data)
+    const response = await this.makeRequest(PAYGATE_URLS.BALANCE, payload)
     
     return {
       flooz: response.flooz,
@@ -180,147 +159,113 @@ export class PayGateClient {
   }
 
   /**
-   * Obtenir le message de statut en français
+   * Effectuer un remboursement/décaissement
+   * URL: https://paygateglobal.com/api/v1/disburse
+   * Méthode: POST
    */
-  getStatusMessage(status: number): string {
-    return STATUS_MESSAGES[status as keyof typeof STATUS_MESSAGES] || 'Statut inconnu'
+  async disburse(params: DisburseParams): Promise<PaymentResponse> {
+    this.validateDisburseParams(params)
+
+    const payload = {
+      auth_token: this.config.authToken,
+      phone_number: normalizePhoneNumber(params.phoneNumber),
+      amount: params.amount,
+      reason: params.reason,
+      reference: params.reference || '',
+      network: params.network
+    }
+
+    const response = await this.makeRequest(PAYGATE_URLS.DISBURSE, payload)
+    
+    return {
+      txReference: response.tx_reference,
+      status: response.status,
+      message: response.status === 200 ? 'Transfert effectué avec succès' : 'Erreur lors du transfert'
+    }
   }
 
   /**
-   * Obtenir le message de statut de transaction
+   * Effectuer une requête HTTP vers l'API PayGateGlobal
    */
-  getTransactionStatusMessage(status: number): string {
-    const messages = {
-      0: 'Transaction enregistrée avec succès',
-      2: 'Jeton d\'authentification invalide',
-      4: 'Paramètres invalides',
-      6: 'Doublons détectés. Une transaction avec le même identifiant existe déjà.'
+  private async makeRequest(url: string, data: any): Promise<any> {
+    const fetchOptions: RequestInit = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'User-Agent': 'PayGate-JS-SDK/1.0.0'
+      },
+      body: JSON.stringify(data)
     }
-    
-    return messages[status as keyof typeof messages] || 'Statut de transaction inconnu'
-  }
 
-  // Méthodes privées
-  
-  private async makeRequest(method: string, endpoint: string, data?: any): Promise<any> {
-    return this.request(this.config.baseUrl + endpoint, method, data)
-  }
-
-  private async makeRequestV2(method: string, endpoint: string, data?: any): Promise<any> {
-    return this.request(this.config.baseUrlV2 + endpoint, method, data)
-  }
-
-  private async request(url: string, method: string, data?: any): Promise<any> {
-    const controller = new AbortController()
-    const timeoutId = setTimeout(() => controller.abort(), this.config.timeout)
+    // Gestion SSL
+    if (!this.config.verifySSL && typeof process !== 'undefined' && process.env) {
+      process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0'
+    }
 
     try {
-      const response = await fetch(url, {
-        method,
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: data ? JSON.stringify(data) : undefined,
-        signal: controller.signal
-      })
-
-      clearTimeout(timeoutId)
-
-      let responseData
-      try {
-        responseData = await response.json()
-      } catch {
-        responseData = null
-      }
-
-      if (!response.ok) {
-        handleApiError(response, responseData)
-      }
-
-      return responseData || {}
-    } catch (error) {
-      clearTimeout(timeoutId)
+      const response = await fetch(url, fetchOptions)
       
+      if (!response.ok) {
+        throw new PayGateError(
+          `Erreur HTTP ${response.status}: ${response.statusText}`,
+          response.status
+        )
+      }
+
+      const result = await response.json()
+      
+      // Vérifier les erreurs de l'API PayGateGlobal
+      if (result.status && result.status !== 0 && result.status !== 200) {
+        throw new PayGateError(
+          this.getStatusMessage(result.status),
+          result.status
+        )
+      }
+
+      return result
+    } catch (error) {
       if (error instanceof PayGateError) {
         throw error
       }
-      
-      if (error instanceof Error) {
-        if (error.name === 'AbortError') {
-          throw new PayGateError('Request timeout', 408, 'TIMEOUT')
-        }
-        throw new PayGateError(`Network error: ${error.message}`, 500, 'NETWORK_ERROR')
+      throw new PayGateError(
+        `Erreur de connexion: ${error instanceof Error ? error.message : 'Erreur inconnue'}`,
+        500
+      )
+    } finally {
+      // Rétablir la vérification SSL
+      if (!this.config.verifySSL && typeof process !== 'undefined' && process.env) {
+        delete process.env['NODE_TLS_REJECT_UNAUTHORIZED']
       }
-      
-      throw new PayGateError('Unknown error occurred', 500, 'UNKNOWN_ERROR')
     }
   }
 
-  private formatPaymentStatus(response: any): PaymentStatus {
-    return {
-      txReference: response.tx_reference || response.txReference,
-      identifier: response.identifier,
-      status: response.status,
-      amount: response.amount,
-      phoneNumber: response.phone_number,
-      paymentMethod: response.payment_method,
-      datetime: response.datetime,
-      message: this.getStatusMessage(response.status)
-    }
-  }
-
+  /**
+   * Valider les paramètres d'initiation de paiement
+   */
   private validateInitiatePaymentParams(params: InitiatePaymentParams): void {
-    if (!validatePhoneNumber(params.phoneNumber)) {
-      throw new PayGateError('Invalid phone number format', 400, 'INVALID_PHONE_NUMBER')
-    }
-    
-    if (!validateAmount(params.amount)) {
-      throw new PayGateError('Amount must be a positive integer', 400, 'INVALID_AMOUNT')
-    }
-    
-    if (!validateIdentifier(params.identifier)) {
-      throw new PayGateError('Identifier is required and must be less than 100 characters', 400, 'INVALID_IDENTIFIER')
-    }
-    
-    if (!validateNetwork(params.network)) {
-      throw new PayGateError('Network must be FLOOZ or TMONEY', 400, 'INVALID_NETWORK')
-    }
+    validatePhoneNumber(params.phoneNumber)
+    validateAmount(params.amount)
+    validateNetwork(params.network)
+    validateIdentifier(params.identifier)
   }
 
-  private validateGeneratePaymentUrlParams(params: GeneratePaymentUrlParams): void {
-    if (!validateAmount(params.amount)) {
-      throw new PayGateError('Amount must be a positive integer', 400, 'INVALID_AMOUNT')
-    }
-    
-    if (!validateIdentifier(params.identifier)) {
-      throw new PayGateError('Identifier is required and must be less than 100 characters', 400, 'INVALID_IDENTIFIER')
-    }
-    
-    if (params.phoneNumber && !validatePhoneNumber(params.phoneNumber)) {
-      throw new PayGateError('Invalid phone number format', 400, 'INVALID_PHONE_NUMBER')
-    }
-    
-    if (params.network && !validateNetwork(params.network)) {
-      throw new PayGateError('Network must be FLOOZ or TMONEY', 400, 'INVALID_NETWORK')
-    }
-  }
-
+  /**
+   * Valider les paramètres de décaissement
+   */
   private validateDisburseParams(params: DisburseParams): void {
-    if (!validatePhoneNumber(params.phoneNumber)) {
-      throw new PayGateError('Invalid phone number format', 400, 'INVALID_PHONE_NUMBER')
-    }
+    validatePhoneNumber(params.phoneNumber)
+    validateAmount(params.amount)
+    validateNetwork(params.network)
     
-    if (!validateAmount(params.amount)) {
-      throw new PayGateError('Amount must be a positive integer', 400, 'INVALID_AMOUNT')
+    if (!params.reason || params.reason.trim() === '') {
+      throw new PayGateError('Raison du décaissement requise', 400)
     }
-    
-    if (!params.reason || params.reason.trim().length === 0) {
-      throw new PayGateError('Reason is required for disbursement', 400, 'MISSING_REASON')
-    }
-    
-    if (!validateNetwork(params.network)) {
-      throw new PayGateError('Network must be FLOOZ or TMONEY', 400, 'INVALID_NETWORK')
-    }
+  }
+
+  /**
+   * Obtenir le message d'état selon les codes officiels
+   */
+  private getStatusMessage(status: number): string {
+    return STATUS_MESSAGES[status as keyof typeof STATUS_MESSAGES] || `Statut inconnu: ${status}`
   }
 }

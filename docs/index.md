@@ -52,8 +52,7 @@ import { PayGateClient } from '@filano/paygate-core'
 
 const client = new PayGateClient({
   authToken: 'your-token',
-  environment: 'sandbox'
-})
+  })
 
 const payment = await client.initiatePayment({
   phoneNumber: '+22890123456',
@@ -71,7 +70,7 @@ import { usePayGate, PayGateProvider } from '@filano/paygate-react'
 
 function App() {
   return (
-    <PayGateProvider authToken="your-token" environment="sandbox">
+    <PayGateProvider authToken="your-token" >
       <PaymentComponent />
     </PayGateProvider>
   )
@@ -128,8 +127,7 @@ export default defineNuxtConfig({
   modules: ['@filano/paygate-nuxt'],
   paygate: {
     authToken: process.env.PAYGATE_TOKEN,
-    environment: 'sandbox'
-  }
+      }
 })
 
 // pages/payment.vue
@@ -161,7 +159,7 @@ import { PayGateProvider } from '@filano/paygate-next/client'
 
 export default function Layout({ children }) {
   return (
-    <PayGateProvider authToken="your-token" environment="sandbox">
+    <PayGateProvider authToken="your-token" >
       {children}
     </PayGateProvider>
   )

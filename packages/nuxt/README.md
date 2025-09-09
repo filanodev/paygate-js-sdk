@@ -38,7 +38,6 @@ export default defineNuxtConfig({
   ],
   paygate: {
     authToken: process.env.PAYGATE_TOKEN,
-    environment: 'sandbox', // 'production' pour la production
     verifySSL: false // pour le développement local uniquement
   }
 })
@@ -54,7 +53,6 @@ export default defineNuxtConfig({
   paygate: {
     // Configuration PayGate
     authToken: process.env.PAYGATE_TOKEN,
-    environment: 'sandbox',
     verifySSL: true,
     
     // Options du module
@@ -71,7 +69,6 @@ Créez un fichier `.env` :
 
 ```env
 PAYGATE_TOKEN=your-paygate-token-here
-NUXT_PUBLIC_PAYGATE_ENVIRONMENT=sandbox
 ```
 
 ## Usage avec les Composables

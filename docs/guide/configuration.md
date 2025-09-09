@@ -2,7 +2,7 @@
 
 ## Variables d'environnement
 
-Toutes les intégrations PayGate nécessitent un token d'authentification et la configuration de l'environnement.
+Toutes les intégrations PayGate nécessitent un token d'authentification.
 
 ### Variables requises
 
@@ -11,9 +11,6 @@ Toutes les intégrations PayGate nécessitent un token d'authentification et la 
 # Token d'authentification PayGateGlobal
 PAYGATE_TOKEN=your-paygate-token-here
 
-# Environnement (sandbox ou production)
-PAYGATE_ENVIRONMENT=sandbox
-
 # Optionnel : Désactiver SSL pour le développement local
 PAYGATE_VERIFY_SSL=false
 ```
@@ -21,21 +18,17 @@ PAYGATE_VERIFY_SSL=false
 ```bash [.env.local (Next.js)]
 # Next.js - Variables publiques avec NEXT_PUBLIC_
 NEXT_PUBLIC_PAYGATE_TOKEN=your-token
-NEXT_PUBLIC_PAYGATE_ENVIRONMENT=sandbox
 
 # Variables serveur (sans NEXT_PUBLIC_)
 PAYGATE_TOKEN=your-token
-PAYGATE_ENVIRONMENT=sandbox
 ```
 
 ```bash [.env (Nuxt)]
 # Nuxt - Variables publiques automatiques
 NUXT_PUBLIC_PAYGATE_TOKEN=your-token
-NUXT_PUBLIC_PAYGATE_ENVIRONMENT=sandbox
 
 # Variables privées serveur
 PAYGATE_TOKEN=your-token
-PAYGATE_ENVIRONMENT=sandbox
 ```
 :::
 
@@ -43,9 +36,7 @@ PAYGATE_ENVIRONMENT=sandbox
 
 1. **Créez un compte** sur [PayGateGlobal](https://paygateglobal.com/)
 2. **Accédez au dashboard** développeur
-3. **Générez un token** pour votre environnement :
-   - **Sandbox** : Pour les tests et développement
-   - **Production** : Pour l'environnement de production
+3. **Générez un token** pour votre application
 
 ## Configuration par framework
 
@@ -56,7 +47,6 @@ import { PayGateClient } from '@filano/paygate-core'
 
 const client = new PayGateClient({
   authToken: process.env.PAYGATE_TOKEN,
-  environment: 'sandbox', // ou 'production'
   verifySSL: true // false pour dev local uniquement
 })
 ```
@@ -71,7 +61,6 @@ function App() {
   return (
     <PayGateProvider
       authToken={process.env.REACT_APP_PAYGATE_TOKEN}
-      environment="sandbox"
       verifySSL={process.env.NODE_ENV === 'production'}
     >
       <YourApp />
@@ -92,7 +81,6 @@ const app = createApp(App)
 
 app.use(PayGatePlugin, {
   authToken: import.meta.env.VITE_PAYGATE_TOKEN,
-  environment: 'sandbox',
   verifySSL: import.meta.env.PROD
 })
 
@@ -108,7 +96,6 @@ export default defineNuxtConfig({
   
   paygate: {
     authToken: process.env.PAYGATE_TOKEN,
-    environment: process.env.PAYGATE_ENVIRONMENT || 'sandbox',
     verifySSL: process.env.NODE_ENV === 'production',
     
     // Options avancées
@@ -136,7 +123,6 @@ export default function RootLayout({
       <body>
         <PayGateProvider
           authToken={process.env.NEXT_PUBLIC_PAYGATE_TOKEN!}
-          environment={process.env.NEXT_PUBLIC_PAYGATE_ENVIRONMENT as any}
           verifySSL={process.env.NODE_ENV === 'production'}
         >
           {children}
@@ -156,7 +142,6 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <PayGateProvider
       authToken={process.env.NEXT_PUBLIC_PAYGATE_TOKEN!}
-      environment={process.env.NEXT_PUBLIC_PAYGATE_ENVIRONMENT as any}
       verifySSL={process.env.NODE_ENV === 'production'}
     >
       <Component {...pageProps} />

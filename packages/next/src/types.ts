@@ -2,7 +2,6 @@
 export type {
   PayGateConfig,
   PayGateNetwork,
-  PayGateEnvironment,
   InitiatePaymentParams,
   GeneratePaymentUrlParams,
   PaymentResponse,
@@ -14,7 +13,6 @@ export type {
 // Next.js specific types
 export interface NextPayGateConfig {
   authToken: string
-  environment: 'sandbox' | 'production'
   verifySSL?: boolean
 }
 

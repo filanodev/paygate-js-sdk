@@ -24,7 +24,6 @@ const createTestApp = () => {
   const app = createApp({})
   app.use(PayGatePlugin, {
     authToken: 'test-token',
-    environment: 'sandbox',
     verifySSL: false
   })
   return app
@@ -55,7 +54,6 @@ describe('Vue PayGate Composables', () => {
       const instance = createApp(component)
       instance.use(PayGatePlugin, {
         authToken: 'test-token',
-        environment: 'sandbox',
         verifySSL: false
       })
       instance.mount(document.createElement('div'))
@@ -80,7 +78,6 @@ describe('Vue PayGate Composables', () => {
       const instance = createApp(component)
       instance.use(PayGatePlugin, {
         authToken: 'test-token',
-        environment: 'sandbox',
         verifySSL: false
       })
       instance.mount(document.createElement('div'))
@@ -109,7 +106,6 @@ describe('Vue PayGate Composables', () => {
       const instance = createApp(component)
       instance.use(PayGatePlugin, {
         authToken: 'test-token',
-        environment: 'sandbox',
         verifySSL: false
       })
       instance.mount(document.createElement('div'))
@@ -134,7 +130,6 @@ describe('Vue PayGate Composables', () => {
       const instance = createApp(component)
       instance.use(PayGatePlugin, {
         authToken: 'test-token',
-        environment: 'sandbox',
         verifySSL: false
       })
       instance.mount(document.createElement('div'))
@@ -160,7 +155,6 @@ describe('Vue PayGate Composables', () => {
       const instance = createApp(component)
       instance.use(PayGatePlugin, {
         authToken: 'test-token',
-        environment: 'sandbox',
         verifySSL: false
       })
       instance.mount(document.createElement('div'))
@@ -185,7 +179,6 @@ describe('Vue PayGate Composables', () => {
       const instance = createApp(component)
       instance.use(PayGatePlugin, {
         authToken: 'test-token',
-        environment: 'sandbox',
         verifySSL: false
       })
       instance.mount(document.createElement('div'))

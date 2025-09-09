@@ -57,7 +57,6 @@ npm install @filano/paygate-next
 ```bash
 # .env
 PAYGATE_TOKEN=your-paygate-token
-PAYGATE_ENVIRONMENT=sandbox
 ```
 
 ### Utilisation
@@ -69,8 +68,7 @@ PAYGATE_ENVIRONMENT=sandbox
 import { PayGateClient } from '@filano/paygate-core'
 
 const client = new PayGateClient({
-  authToken: process.env.PAYGATE_TOKEN,
-  environment: 'sandbox'
+  authToken: process.env.PAYGATE_TOKEN
 })
 
 // Initier un paiement
@@ -94,7 +92,7 @@ import { PayGateProvider, usePayGate } from '@filano/paygate-react'
 
 function App() {
   return (
-    <PayGateProvider authToken="your-token" environment="sandbox">
+    <PayGateProvider authToken="your-token">
       <PaymentComponent />
     </PayGateProvider>
   )
@@ -158,8 +156,7 @@ const handlePayment = async () => {
 export default defineNuxtConfig({
   modules: ['@filano/paygate-nuxt'],
   paygate: {
-    authToken: process.env.PAYGATE_TOKEN,
-    environment: 'sandbox'
+    authToken: process.env.PAYGATE_TOKEN
   }
 })
 ```
@@ -198,7 +195,7 @@ import { PayGateProvider } from '@filano/paygate-next/client'
 
 export default function Layout({ children }) {
   return (
-    <PayGateProvider authToken="your-token" environment="sandbox">
+    <PayGateProvider authToken="your-token">
       {children}
     </PayGateProvider>
   )
@@ -338,25 +335,41 @@ Les contributions sont les bienvenues ! Consultez [CONTRIBUTING.md](./CONTRIBUTI
 
 Ce projet est sous licence MIT. Voir [LICENSE](./LICENSE) pour plus de détails.
 
+## 🌍 À propos de PayGateGlobal
+
+**PayGateGlobal** est le **premier intégrateur de paiement en ligne au Togo** et le moyen le plus rapide de recevoir des paiements en ligne via les portefeuilles mobiles africains.
+
+### 💰 Tarification
+- **FLOOZ (Moov Togo)** : 2,5% par transaction
+- **T-Money (Togocel)** : 3% par transaction
+
+### 🌍 Couverture
+- **Togo** 🇹🇬 - FLOOZ et T-Money
+- **Expansion en cours** vers d'autres pays d'Afrique de l'Ouest
+
 ## 🙏 Support
 
-### Support PayGateGlobal officiel
+### Support PayGateGlobal Officiel
 - 🌐 **Site web** : [https://paygateglobal.com/](https://paygateglobal.com/)
 - 📧 **Email** : info@paygateglobal.com
-- 📞 **Téléphone** : +228 XX XX XX XX
+- 📞 **Téléphones** : 
+  - +228 96 96 21 21
+  - +228 92 60 50 32
+- 📍 **Localisation** : Lomé, Togo
 
-### Support du SDK
+### Support du SDK Communautaire
 - 🐛 **Issues** : [GitHub Issues](https://github.com/filano/paygate-js-sdk/issues)
 - 💬 **Discussions** : [GitHub Discussions](https://github.com/filano/paygate-js-sdk/discussions)
 - 📖 **Documentation** : [Guide complet](./docs/)
 
-### Donation
+### 💝 Soutenir le Développement
 
-Si ce SDK vous aide dans vos projets, vous pouvez soutenir son développement :
+Si ce SDK vous fait gagner du temps, vous pouvez soutenir son développement :
 
 - 💝 **[Faire un don via FedaPay](https://me.fedapay.com/filano_don)**
 - ⭐ **[Star le projet sur GitHub](https://github.com/filano/paygate-js-sdk)**
-- 📢 **Partagez le projet** avec la communauté
+- 📢 **Partagez avec la communauté** JavaScript africaine
+- 🔗 **Utilisez nos autres packages** : [Laravel PayGate](https://github.com/filanodev/laravel-paygate-global)
 
 ## 🎯 Roadmap
 

@@ -23,7 +23,6 @@ vi.mock('@filano/paygate-core', () => ({
 
 const mockConfig = {
   authToken: 'test-token',
-  environment: 'sandbox' as const,
   verifySSL: false
 }
 

@@ -34,8 +34,6 @@ Créez un fichier `.env.local` :
 
 ```env
 PAYGATE_TOKEN=your-paygate-token-here
-PAYGATE_ENVIRONMENT=sandbox
-# PAYGATE_ENVIRONMENT=production pour la production
 ```
 
 ### Provider dans l'App (App Router)
@@ -54,7 +52,6 @@ export default function RootLayout({
       <body>
         <PayGateProvider
           authToken={process.env.NEXT_PUBLIC_PAYGATE_TOKEN!}
-          environment="sandbox"
           verifySSL={false} // pour le développement uniquement
         >
           {children}
@@ -76,7 +73,6 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <PayGateProvider
       authToken={process.env.NEXT_PUBLIC_PAYGATE_TOKEN!}
-      environment="sandbox"
       verifySSL={false}
     >
       <Component {...pageProps} />
@@ -251,8 +247,7 @@ import { NextRequest } from 'next/server'
 import { createInitiatePaymentHandler } from '@filano/paygate-next/server'
 
 const handler = createInitiatePaymentHandler({
-  authToken: process.env.PAYGATE_TOKEN!,
-  environment: 'sandbox'
+  authToken: process.env.PAYGATE_TOKEN!
 })
 
 export async function POST(request: NextRequest) {
@@ -497,7 +492,6 @@ ensurePayGateConfig()
 // Client global pour l'application
 export const paygateClient = createPayGateApiClient({
   authToken: process.env.PAYGATE_TOKEN!,
-  environment: process.env.PAYGATE_ENVIRONMENT as 'sandbox' | 'production',
   verifySSL: process.env.NODE_ENV === 'production'
 })
 ```
