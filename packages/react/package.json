@@ -53,7 +53,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/filano/paygate-js-sdk",
+    "url": "https://github.com/filanodev/paygate-js-sdk",
     "directory": "packages/react"
+  },
+  "funding": {
+    "type": "individual",
+    "url": "https://me.fedapay.com/filano_don"
   }
 }

@@ -43,8 +43,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/filano/paygate-js-sdk.git",
+    "url": "https://github.com/filanodev/paygate-js-sdk.git",
     "directory": "packages/nuxt"
+  },
+  "funding": {
+    "type": "individual",
+    "url": "https://me.fedapay.com/filano_don"
   },
   "keywords": [
     "paygate",
