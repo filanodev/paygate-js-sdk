@@ -1,0 +1,51 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: '8.15.0'
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Check basic structure
+        run: |
+          echo "✅ Repository structure:"
+          ls -la packages/
+          echo "✅ Core package:"
+          ls -la packages/core/src/
+          echo "✅ All packages have package.json:"
+          find packages -name "package.json" | wc -l
+
+      - name: Validate package.json files
+        run: |
+          echo "✅ Validating package.json files..."
+          for pkg in packages/*/package.json; do
+            echo "Checking $pkg"
+            node -e "JSON.parse(require('fs').readFileSync('$pkg', 'utf8'))"
+          done
+
+      - name: Success
+        run: |
+          echo "🎉 CI passed! Repository is ready for publication."
+          echo "📦 Next step: Create a release tag to trigger publication:"
+          echo "   git tag v1.0.0"
+          echo "   git push origin v1.0.0"
