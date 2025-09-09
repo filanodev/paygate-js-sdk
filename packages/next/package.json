@@ -1,6 +1,6 @@
 {
   "name": "@filanodev/paygate-next",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Plugin Next.js pour l'intégration de PayGateGlobal - Support FLOOZ et T-Money",
   "type": "module",
   "main": "./dist/index.cjs",

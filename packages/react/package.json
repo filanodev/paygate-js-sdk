@@ -1,6 +1,6 @@
 {
   "name": "@filanodev/paygate-react",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "PayGateGlobal React hooks and components - Support FLOOZ and T-Money",
   "author": "Filano <info@filano.dev>",
   "license": "MIT",
