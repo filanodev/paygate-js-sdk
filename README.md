@@ -384,9 +384,6 @@ Si ce SDK vous fait gagner du temps, vous pouvez soutenir son développement :
 
 **Filano** - Développeur Full Stack passionné par l'écosystème JavaScript et les solutions de paiement en Afrique.
 
-- 🌐 Website: [filano.dev](https://filano.dev)
-- 💼 LinkedIn: [linkedin.com/in/filano](https://linkedin.com/in/filano)
-- 🐦 Twitter: [@filano_dev](https://twitter.com/filano_dev)
 - 💝 Donation: [me.fedapay.com/filano_don](https://me.fedapay.com/filano_don)
 
 ---
