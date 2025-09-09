@@ -8,7 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@filano/paygate-vue": "workspace:*",
+    "@filanodev/paygate-vue": "workspace:*",
     "vue": "^3.4.21"
   },
   "devDependencies": {
