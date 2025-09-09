@@ -1,6 +1,6 @@
 {
   "name": "@filanodev/paygate-core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "PayGateGlobal JavaScript SDK - Core package for FLOOZ and T-Money payments",
   "author": "Filano <info@filano.dev>",
   "license": "MIT",

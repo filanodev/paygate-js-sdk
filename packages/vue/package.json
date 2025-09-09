@@ -1,6 +1,6 @@
 {
   "name": "@filanodev/paygate-vue",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "PayGateGlobal Vue.js plugin with composables - Support FLOOZ and T-Money",
   "author": "Filano <info@filano.dev>",
   "license": "MIT",
