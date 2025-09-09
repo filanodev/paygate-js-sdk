@@ -1,0 +1,72 @@
+{
+  "name": "@filano/paygate-nuxt",
+  "version": "1.0.0",
+  "description": "Module Nuxt pour l'intégration de PayGateGlobal - Support FLOOZ et T-Money",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs"
+    }
+  },
+  "main": "./dist/module.cjs",
+  "types": "./dist/types.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "prepack": "nuxt-module-build build",
+    "dev": "nuxi dev playground",
+    "dev:build": "nuxi build playground",
+    "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
+    "release": "npm run lint && npm run test && npm run prepack && changelogs gh release && npm publish && git push --follow-tags",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "@filano/paygate-core": "workspace:*",
+    "@nuxt/kit": "^3.8.0 || ^4.0.0"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@nuxt/eslint-config": "^0.3.0",
+    "@nuxt/module-builder": "^0.6.0",
+    "@nuxt/schema": "^3.8.0 || ^4.0.0",
+    "@nuxt/test-utils": "^3.8.0 || ^4.0.0",
+    "changelogs": "^3.3.2",
+    "eslint": "^9.0.0",
+    "nuxt": "^3.8.0 || ^4.0.0",
+    "typescript": "^5.3.0",
+    "vitest": "^2.0.0",
+    "vue-tsc": "^2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/filano/paygate-js-sdk.git",
+    "directory": "packages/nuxt"
+  },
+  "keywords": [
+    "paygate",
+    "paygateglobal",
+    "payment",
+    "flooz",
+    "tmoney",
+    "togo",
+    "mobile-money",
+    "nuxt",
+    "nuxt3",
+    "module"
+  ],
+  "author": {
+    "name": "Filano",
+    "url": "https://me.fedapay.com/filano_don"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/filano/paygate-js-sdk#readme",
+  "bugs": {
+    "url": "https://github.com/filano/paygate-js-sdk/issues"
+  }
+}

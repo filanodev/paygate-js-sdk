@@ -1,0 +1,26 @@
+{
+  "name": "@filano/paygate-docs",
+  "version": "1.0.0",
+  "description": "Documentation centrale pour PayGate JavaScript SDK",
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview",
+    "serve": "vitepress serve"
+  },
+  "devDependencies": {
+    "vitepress": "^1.0.0",
+    "vue": "^3.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/filano/paygate-js-sdk.git",
+    "directory": "docs"
+  },
+  "author": {
+    "name": "Filano",
+    "url": "https://me.fedapay.com/filano_don"
+  },
+  "license": "MIT"
+}

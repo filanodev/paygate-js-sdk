@@ -1,0 +1,53 @@
+{
+  "name": "@filano/paygate-core",
+  "version": "0.1.0",
+  "description": "PayGateGlobal JavaScript SDK - Core package for FLOOZ and T-Money payments",
+  "author": "Filano <info@filano.dev>",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch",
+    "test": "vitest",
+    "test:ci": "vitest run",
+    "lint": "eslint src/**/*.ts",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "paygate",
+    "paygate-global",
+    "flooz",
+    "tmoney",
+    "togo",
+    "payments",
+    "mobile-money",
+    "africa",
+    "javascript",
+    "typescript"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "vite": "^5.1.4",
+    "vite-plugin-dts": "^3.7.3",
+    "vitest": "^1.3.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/filano/paygate-js-sdk",
+    "directory": "packages/core"
+  }
+}
