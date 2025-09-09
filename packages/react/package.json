@@ -1,5 +1,5 @@
 {
-  "name": "@filano/paygate-react",
+  "name": "@filanodev/paygate-react",
   "version": "0.1.0",
   "description": "PayGateGlobal React hooks and components - Support FLOOZ and T-Money",
   "author": "Filano <info@filano.dev>",
@@ -37,7 +37,7 @@
     "africa"
   ],
   "dependencies": {
-    "@filano/paygate-core": "workspace:*"
+    "@filanodev/paygate-core": "workspace:*"
   },
   "peerDependencies": {
     "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"

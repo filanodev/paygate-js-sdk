@@ -43,7 +43,7 @@ PAYGATE_TOKEN=your-token
 ### Core JavaScript
 
 ```js
-import { PayGateClient } from '@filano/paygate-core'
+import { PayGateClient } from '@filanodev/paygate-core'
 
 const client = new PayGateClient({
   authToken: process.env.PAYGATE_TOKEN,
@@ -55,7 +55,7 @@ const client = new PayGateClient({
 
 ```jsx
 // App.jsx
-import { PayGateProvider } from '@filano/paygate-react'
+import { PayGateProvider } from '@filanodev/paygate-react'
 
 function App() {
   return (
@@ -74,7 +74,7 @@ function App() {
 ```js
 // main.js
 import { createApp } from 'vue'
-import { PayGatePlugin } from '@filano/paygate-vue'
+import { PayGatePlugin } from '@filanodev/paygate-vue'
 import App from './App.vue'
 
 const app = createApp(App)
@@ -92,7 +92,7 @@ app.mount('#app')
 ```ts
 // nuxt.config.ts
 export default defineNuxtConfig({
-  modules: ['@filano/paygate-nuxt'],
+  modules: ['@filanodev/paygate-nuxt'],
   
   paygate: {
     authToken: process.env.PAYGATE_TOKEN,
@@ -111,7 +111,7 @@ export default defineNuxtConfig({
 ::: code-group
 ```tsx [App Router]
 // app/layout.tsx
-import { PayGateProvider } from '@filano/paygate-next/client'
+import { PayGateProvider } from '@filanodev/paygate-next/client'
 
 export default function RootLayout({
   children
@@ -136,7 +136,7 @@ export default function RootLayout({
 ```tsx [Pages Router]
 // pages/_app.tsx
 import type { AppProps } from 'next/app'
-import { PayGateProvider } from '@filano/paygate-next/client'
+import { PayGateProvider } from '@filanodev/paygate-next/client'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -207,7 +207,7 @@ interface PayGateConfig {
 ### Client personnalisé avec options
 
 ```js
-import { PayGateClient } from '@filano/paygate-core'
+import { PayGateClient } from '@filanodev/paygate-core'
 
 const client = new PayGateClient({
   authToken: process.env.PAYGATE_TOKEN,
@@ -225,7 +225,7 @@ const client = new PayGateClient({
 
 ```jsx
 // React - Configuration locale
-import { PayGateProvider } from '@filano/paygate-react'
+import { PayGateProvider } from '@filanodev/paygate-react'
 
 function CheckoutPage() {
   const checkoutConfig = {
@@ -319,7 +319,7 @@ PAYGATE_VERIFY_SSL=false
 ### Vérification automatique
 
 ```js
-import { PayGateClient } from '@filano/paygate-core'
+import { PayGateClient } from '@filanodev/paygate-core'
 
 try {
   const client = new PayGateClient({

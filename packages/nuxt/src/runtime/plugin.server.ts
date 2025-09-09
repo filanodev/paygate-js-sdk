@@ -1,6 +1,6 @@
 import { defineNuxtPlugin, useRuntimeConfig } from '#app'
-import { PayGateClient } from '@filano/paygate-core'
-import type { PayGateConfig } from '@filano/paygate-core'
+import { PayGateClient } from '@filanodev/paygate-core'
+import type { PayGateConfig } from '@filanodev/paygate-core'
 
 export default defineNuxtPlugin({
   name: 'paygate-server',

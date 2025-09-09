@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useMemo } from 'react'
-import { PayGateClient } from '@filano/paygate-core'
+import { PayGateClient } from '@filanodev/paygate-core'
 import type { PayGateProviderProps, PayGateContextValue } from './types'
 
 const PayGateContext = createContext<PayGateContextValue>({ client: null })

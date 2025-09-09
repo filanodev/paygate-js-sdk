@@ -1,6 +1,6 @@
-# @filano/paygate-core
+# @filanodev/paygate-core
 
-[![npm version](https://img.shields.io/npm/v/@filano/paygate-core.svg)](https://www.npmjs.com/package/@filano/paygate-core)
+[![npm version](https://img.shields.io/npm/v/@filanodev/paygate-core.svg)](https://www.npmjs.com/package/@filanodev/paygate-core)
 
 SDK JavaScript pour l'intégration de PayGateGlobal - Support FLOOZ et T-Money.
 
@@ -9,17 +9,17 @@ SDK JavaScript pour l'intégration de PayGateGlobal - Support FLOOZ et T-Money.
 ## Installation
 
 ```bash
-npm install @filano/paygate-core
+npm install @filanodev/paygate-core
 # ou
-yarn add @filano/paygate-core
+yarn add @filanodev/paygate-core
 # ou
-pnpm add @filano/paygate-core
+pnpm add @filanodev/paygate-core
 ```
 
 ## Usage rapide
 
 ```javascript
-import { PayGateClient } from '@filano/paygate-core'
+import { PayGateClient } from '@filanodev/paygate-core'
 
 const paygate = new PayGateClient({
   authToken: 'your-paygate-token',
@@ -129,7 +129,7 @@ console.log('FLOOZ:', balance.flooz, 'T-Money:', balance.tmoney)
 ## Gestion des erreurs
 
 ```javascript
-import { PayGateError } from '@filano/paygate-core'
+import { PayGateError } from '@filanodev/paygate-core'
 
 try {
   const payment = await paygate.initiatePayment(params)
@@ -157,7 +157,7 @@ import type {
   PaymentResponse,
   PaymentStatus,
   PayGateNetwork 
-} from '@filano/paygate-core'
+} from '@filanodev/paygate-core'
 ```
 
 ## Statuts de paiement

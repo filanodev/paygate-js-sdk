@@ -28,7 +28,7 @@ paygate-js-sdk/
 
 ## 🧬 **QUALITÉ DU CODE VÉRIFIÉE**
 
-### ✅ Core Package (`@filano/paygate-core`)
+### ✅ Core Package (`@filanodev/paygate-core`)
 - **PayGateClient** : Implémentation complète et robuste
 - **Types TypeScript** : Interfaces complètes et cohérentes
 - **Validation** : Paramètres validés (téléphone, montant, réseau)
@@ -36,7 +36,7 @@ paygate-js-sdk/
 - **SSL** : Configuration flexible dev/prod
 - **Tests** : Tests unitaires avec Vitest
 
-### ✅ React Package (`@filano/paygate-react`)  
+### ✅ React Package (`@filanodev/paygate-react`)  
 - **Hooks modernes** : `usePayGate()`, `usePaymentInitiation()`, `usePaymentStatus()`
 - **Context Provider** : Injection de dépendances propre
 - **State Management** : États loading/error gérés
@@ -44,7 +44,7 @@ paygate-js-sdk/
 - **Types** : Support TypeScript complet
 - **Tests** : React Testing Library
 
-### ✅ Vue Package (`@filano/paygate-vue`)
+### ✅ Vue Package (`@filanodev/paygate-vue`)
 - **Composables** : API moderne Composition API
 - **Plugin Vue** : Installation globale avec `app.use()`
 - **Réactivité** : ref/computed correctement utilisés
@@ -52,7 +52,7 @@ paygate-js-sdk/
 - **TypeScript** : Types exportés et utilisables
 - **Tests** : Vue Test Utils
 
-### ✅ Nuxt Package (`@filano/paygate-nuxt`)
+### ✅ Nuxt Package (`@filanodev/paygate-nuxt`)
 - **Module Nuxt** : Compatible 3.0+ et 4.0+
 - **Auto-imports** : Composables disponibles globalement
 - **SSR/SSG** : Plugins client/serveur séparés
@@ -60,7 +60,7 @@ paygate-js-sdk/
 - **Server Utils** : Utilitaires pour API routes
 - **Types** : Déclarations d'augmentation Nuxt
 
-### ✅ Next.js Package (`@filano/paygate-next`)
+### ✅ Next.js Package (`@filanodev/paygate-next`)
 - **App Router** : Support Next.js 13+ complet
 - **Pages Router** : Rétrocompatibilité 12+
 - **Client-side** : Hooks React avec 'use client'

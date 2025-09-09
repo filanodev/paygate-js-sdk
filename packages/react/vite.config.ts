@@ -17,7 +17,7 @@ export default defineConfig({
       fileName: (format) => `index.${format === 'es' ? 'js' : 'cjs'}`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom', '@filano/paygate-core'],
+      external: ['react', 'react-dom', '@filanodev/paygate-core'],
     },
   },
   test: {

@@ -44,30 +44,30 @@ grep -r "PayGateEnvironment" packages/ | wc -l
 
 ## 📦 **TOUS LES PACKAGES CORRIGÉS**
 
-### ✅ **@filano/paygate-core** - Conforme
+### ✅ **@filanodev/paygate-core** - Conforme
 - URLs officielles PayGateGlobal
 - Paramètres API exacts : `auth_token`, `phone_number`, etc.
 - Codes d'état officiels : 0, 2, 4, 6
 - Configuration simple sans environment
 
-### ✅ **@filano/paygate-react** - Conforme  
+### ✅ **@filanodev/paygate-react** - Conforme  
 - Provider sans paramètre environment
 - Hooks utilisant la config core simplifiée
 - Tests corrigés
 - README mis à jour
 
-### ✅ **@filano/paygate-vue** - Conforme
+### ✅ **@filanodev/paygate-vue** - Conforme
 - Plugin sans paramètre environment
 - Composables utilisant la config simplifiée
 - Tests corrigés
 - README mis à jour
 
-### ✅ **@filano/paygate-nuxt** - Conforme
+### ✅ **@filanodev/paygate-nuxt** - Conforme
 - Module sans environment dans defaults
 - Configuration runtime simplifiée
 - README mis à jour avec exemples corrects
 
-### ✅ **@filano/paygate-next** - Conforme
+### ✅ **@filanodev/paygate-next** - Conforme
 - Types sans PayGateEnvironment
 - Context Provider simplifié
 - Utilitaires serveur corrigés

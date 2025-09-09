@@ -1,4 +1,4 @@
-import { PayGateClient } from '@filano/paygate-core'
+import { PayGateClient } from '@filanodev/paygate-core'
 import type { 
   PayGateConfig,
   InitiatePaymentParams,
@@ -6,7 +6,7 @@ import type {
   PaymentStatus,
   DisburseParams,
   Balance
-} from '@filano/paygate-core'
+} from '@filanodev/paygate-core'
 
 let _paygateClient: PayGateClient | null = null
 

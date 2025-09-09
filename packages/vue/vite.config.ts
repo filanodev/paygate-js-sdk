@@ -17,7 +17,7 @@ export default defineConfig({
       fileName: (format) => `index.${format === 'es' ? 'js' : 'cjs'}`,
     },
     rollupOptions: {
-      external: ['vue', '@filano/paygate-core'],
+      external: ['vue', '@filanodev/paygate-core'],
     },
   },
   test: {

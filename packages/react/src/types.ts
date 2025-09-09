@@ -1,4 +1,4 @@
-import type { PayGateConfig, PayGateClient } from '@filano/paygate-core'
+import type { PayGateConfig, PayGateClient } from '@filanodev/paygate-core'
 import type { ReactNode } from 'react'
 
 export interface PayGateProviderProps extends PayGateConfig {

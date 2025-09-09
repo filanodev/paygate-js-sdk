@@ -6,7 +6,7 @@ Le SDK PayGateGlobal JavaScript complet a été développé avec succès. Tous l
 
 ## 📦 Packages Créés
 
-### 1. @filano/paygate-core
+### 1. @filanodev/paygate-core
 - ✅ **Client JavaScript de base** complet
 - ✅ **Support TypeScript** avec types auto-générés  
 - ✅ **Validation des paramètres** intégrée
@@ -23,7 +23,7 @@ Le SDK PayGateGlobal JavaScript complet a été développé avec succès. Tous l
 - `disburse()` - Effectuer un décaissement
 - `checkBalance()` - Vérifier le solde
 
-### 2. @filano/paygate-react  
+### 2. @filanodev/paygate-react  
 - ✅ **Hooks React** modernes (16.8+, 17, 18, 19)
 - ✅ **Context Provider** pour l'injection de dépendances
 - ✅ **Composants prêts à l'emploi** (PaymentForm, StatusChecker)
@@ -36,7 +36,7 @@ Le SDK PayGateGlobal JavaScript complet a été développé avec succès. Tous l
 - `usePaymentInitiation()` - Hook spécialisé initiation
 - `usePaymentStatus()` - Hook vérification avec polling
 
-### 3. @filano/paygate-vue
+### 3. @filanodev/paygate-vue
 - ✅ **Composables Vue 3** avec Composition API
 - ✅ **Plugin Vue** avec installation globale
 - ✅ **Composants Vue** réactifs (PaymentForm, StatusChecker)
@@ -49,7 +49,7 @@ Le SDK PayGateGlobal JavaScript complet a été développé avec succès. Tous l
 - `usePaymentInitiation()` - Composable initiation
 - `usePaymentStatus()` - Composable statut avec polling
 
-### 4. @filano/paygate-nuxt
+### 4. @filanodev/paygate-nuxt
 - ✅ **Module Nuxt 3/4** avec support complet
 - ✅ **Auto-imports** des composables
 - ✅ **SSR/SSG** compatible
@@ -63,7 +63,7 @@ Le SDK PayGateGlobal JavaScript complet a été développé avec succès. Tous l
 - Configuration via `nuxt.config.ts`
 - Support Nuxt 3.0+ et Nuxt 4.0+
 
-### 5. @filano/paygate-next
+### 5. @filanodev/paygate-next
 - ✅ **Plugin Next.js 12-15** (Pages & App Router)
 - ✅ **Hooks client-side** avec 'use client'
 - ✅ **API Route helpers** prêts à l'emploi

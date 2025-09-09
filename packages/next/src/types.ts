@@ -8,7 +8,7 @@ export type {
   PaymentStatus,
   DisburseParams,
   Balance
-} from '@filano/paygate-core'
+} from '@filanodev/paygate-core'
 
 // Next.js specific types
 export interface NextPayGateConfig {

@@ -7,7 +7,7 @@ import type {
   PaymentUrlResponse,
   DisburseParams,
   Balance
-} from '@filano/paygate-core'
+} from '@filanodev/paygate-core'
 
 interface UsePayGateState {
   loading: boolean

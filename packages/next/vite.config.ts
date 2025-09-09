@@ -26,7 +26,7 @@ export default defineConfig({
         'react',
         'react-dom',
         'next',
-        '@filano/paygate-core'
+        '@filanodev/paygate-core'
       ],
       output: {
         globals: {

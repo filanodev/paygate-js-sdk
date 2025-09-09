@@ -20,7 +20,7 @@ export type {
   PaymentStatus,
   DisburseParams,
   Balance
-} from '@filano/paygate-core'
+} from '@filanodev/paygate-core'
 
 // Re-export des erreurs du core
-export { PayGateError } from '@filano/paygate-core'
+export { PayGateError } from '@filanodev/paygate-core'

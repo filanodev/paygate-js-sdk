@@ -1,5 +1,5 @@
 {
-  "name": "@filano/paygate-vue",
+  "name": "@filanodev/paygate-vue",
   "version": "0.1.0",
   "description": "PayGateGlobal Vue.js plugin with composables - Support FLOOZ and T-Money",
   "author": "Filano <info@filano.dev>",
@@ -37,7 +37,7 @@
     "africa"
   ],
   "dependencies": {
-    "@filano/paygate-core": "workspace:*"
+    "@filanodev/paygate-core": "workspace:*"
   },
   "peerDependencies": {
     "vue": "^3.0.0 || ^3.5.0"

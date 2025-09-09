@@ -1,6 +1,6 @@
-# @filano/paygate-nuxt
+# @filanodev/paygate-nuxt
 
-[![npm version](https://img.shields.io/npm/v/@filano/paygate-nuxt.svg)](https://www.npmjs.com/package/@filano/paygate-nuxt)
+[![npm version](https://img.shields.io/npm/v/@filanodev/paygate-nuxt.svg)](https://www.npmjs.com/package/@filanodev/paygate-nuxt)
 
 Module Nuxt 3/4 pour l'intégration de PayGateGlobal - Support FLOOZ et T-Money.
 
@@ -18,11 +18,11 @@ Module Nuxt 3/4 pour l'intégration de PayGateGlobal - Support FLOOZ et T-Money.
 ## Installation
 
 ```bash
-npm install @filano/paygate-nuxt
+npm install @filanodev/paygate-nuxt
 # ou
-yarn add @filano/paygate-nuxt
+yarn add @filanodev/paygate-nuxt
 # ou
-pnpm add @filano/paygate-nuxt
+pnpm add @filanodev/paygate-nuxt
 ```
 
 ## Configuration
@@ -34,7 +34,7 @@ Ajoutez le module dans votre `nuxt.config.ts` :
 ```typescript
 export default defineNuxtConfig({
   modules: [
-    '@filano/paygate-nuxt'
+    '@filanodev/paygate-nuxt'
   ],
   paygate: {
     authToken: process.env.PAYGATE_TOKEN,
@@ -48,7 +48,7 @@ export default defineNuxtConfig({
 ```typescript
 export default defineNuxtConfig({
   modules: [
-    '@filano/paygate-nuxt'
+    '@filanodev/paygate-nuxt'
   ],
   paygate: {
     // Configuration PayGate
@@ -581,7 +581,7 @@ const formatDate = (datetime: string) => {
 Le module ajoute automatiquement les types. Créez `types/paygate.d.ts` si nécessaire :
 
 ```typescript
-import type { PayGateClient } from '@filano/paygate-core'
+import type { PayGateClient } from '@filanodev/paygate-core'
 
 declare module '#app' {
   interface NuxtApp {

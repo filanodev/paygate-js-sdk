@@ -1,5 +1,5 @@
 {
-  "name": "@filano/paygate-nuxt",
+  "name": "@filanodev/paygate-nuxt",
   "version": "1.0.0",
   "description": "Module Nuxt pour l'intégration de PayGateGlobal - Support FLOOZ et T-Money",
   "type": "module",
@@ -27,7 +27,7 @@
     "test:types": "vue-tsc --noEmit && cd playground && vue-tsc --noEmit"
   },
   "dependencies": {
-    "@filano/paygate-core": "workspace:*",
+    "@filanodev/paygate-core": "workspace:*",
     "@nuxt/kit": "^3.8.0 || ^4.0.0"
   },
   "devDependencies": {

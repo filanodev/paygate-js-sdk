@@ -1,5 +1,5 @@
 import { defineNuxtModule, addPlugin, addImports, createResolver, addTypeTemplate } from '@nuxt/kit'
-import type { PayGateConfig } from '@filano/paygate-core'
+import type { PayGateConfig } from '@filanodev/paygate-core'
 
 export interface ModuleOptions extends PayGateConfig {
   /**
@@ -23,7 +23,7 @@ export interface ModuleOptions extends PayGateConfig {
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
-    name: '@filano/paygate-nuxt',
+    name: '@filanodev/paygate-nuxt',
     configKey: 'paygate',
     compatibility: {
       nuxt: '^3.0.0 || ^4.0.0'
@@ -86,7 +86,7 @@ export default defineNuxtModule<ModuleOptions>({
     addTypeTemplate({
       filename: 'types/paygate.d.ts',
       content: `
-import type { PayGateClient, PayGateConfig, PaymentResponse, PaymentStatus } from '@filano/paygate-core'
+import type { PayGateClient, PayGateConfig, PaymentResponse, PaymentStatus } from '@filanodev/paygate-core'
 
 declare global {
   interface NuxtApp {
@@ -113,6 +113,6 @@ export {}
     // Transpiler les dépendances
     nuxt.options.build = nuxt.options.build || {}
     nuxt.options.build.transpile = nuxt.options.build.transpile || []
-    nuxt.options.build.transpile.push('@filano/paygate-core')
+    nuxt.options.build.transpile.push('@filanodev/paygate-core')
   }
 })

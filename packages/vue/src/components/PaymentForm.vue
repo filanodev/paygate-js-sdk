@@ -101,7 +101,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import type { PayGateNetwork } from '@filano/paygate-core'
+import type { PayGateNetwork } from '@filanodev/paygate-core'
 import { usePaymentInitiation } from '../composables'
 
 interface Props {

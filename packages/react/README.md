@@ -1,6 +1,6 @@
-# @filano/paygate-react
+# @filanodev/paygate-react
 
-[![npm version](https://img.shields.io/npm/v/@filano/paygate-react.svg)](https://www.npmjs.com/package/@filano/paygate-react)
+[![npm version](https://img.shields.io/npm/v/@filanodev/paygate-react.svg)](https://www.npmjs.com/package/@filanodev/paygate-react)
 
 Hooks et composants React pour l'intégration de PayGateGlobal - Support FLOOZ et T-Money.
 
@@ -9,11 +9,11 @@ Hooks et composants React pour l'intégration de PayGateGlobal - Support FLOOZ e
 ## Installation
 
 ```bash
-npm install @filano/paygate-react
+npm install @filanodev/paygate-react
 # ou
-yarn add @filano/paygate-react
+yarn add @filanodev/paygate-react
 # ou
-pnpm add @filano/paygate-react
+pnpm add @filanodev/paygate-react
 ```
 
 ## Configuration
@@ -25,7 +25,7 @@ Enveloppez votre application avec le `PayGateProvider` :
 ```jsx
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { PayGateProvider } from '@filano/paygate-react'
+import { PayGateProvider } from '@filanodev/paygate-react'
 import App from './App'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -44,7 +44,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
 ```jsx
 import React from 'react'
-import { usePayGate } from '@filano/paygate-react'
+import { usePayGate } from '@filanodev/paygate-react'
 
 function PaymentComponent() {
   const { 
@@ -95,7 +95,7 @@ function PaymentComponent() {
 ### Hook spécialisé pour l'initiation
 
 ```jsx
-import { usePaymentInitiation } from '@filano/paygate-react'
+import { usePaymentInitiation } from '@filanodev/paygate-react'
 
 function InitiationComponent() {
   const { 
@@ -140,7 +140,7 @@ function InitiationComponent() {
 
 ```jsx
 import { useState } from 'react'
-import { usePaymentStatus } from '@filano/paygate-react'
+import { usePaymentStatus } from '@filanodev/paygate-react'
 
 function StatusComponent() {
   const [reference, setReference] = useState('')
@@ -195,7 +195,7 @@ function StatusComponent() {
 Formulaire de paiement complet avec validation :
 
 ```jsx
-import { PaymentForm } from '@filano/paygate-react'
+import { PaymentForm } from '@filanodev/paygate-react'
 
 function App() {
   const handleSuccess = (result) => {
@@ -225,7 +225,7 @@ function App() {
 Composant pour vérifier les statuts :
 
 ```jsx
-import { StatusChecker } from '@filano/paygate-react'
+import { StatusChecker } from '@filanodev/paygate-react'
 
 function App() {
   const handleStatusUpdate = (status) => {
@@ -320,13 +320,13 @@ import type {
   PayGateNetwork,
   InitiatePaymentParams,
   PaymentStatus 
-} from '@filano/paygate-react'
+} from '@filanodev/paygate-react'
 ```
 
 ## Gestion des erreurs
 
 ```jsx
-import { usePayGate, PayGateError } from '@filano/paygate-react'
+import { usePayGate, PayGateError } from '@filanodev/paygate-react'
 
 function PaymentComponent() {
   const { initiatePayment } = usePayGate()
@@ -354,7 +354,7 @@ import {
   usePayGate,
   type PayGateNetwork,
   type InitiatePaymentParams 
-} from '@filano/paygate-react'
+} from '@filanodev/paygate-react'
 
 interface PaymentFormData {
   phoneNumber: string

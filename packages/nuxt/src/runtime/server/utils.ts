@@ -1,6 +1,6 @@
 import { useRuntimeConfig } from '#nitro'
-import { PayGateClient } from '@filano/paygate-core'
-import type { PayGateConfig, InitiatePaymentParams, PaymentResponse, PaymentStatus } from '@filano/paygate-core'
+import { PayGateClient } from '@filanodev/paygate-core'
+import type { PayGateConfig, InitiatePaymentParams, PaymentResponse, PaymentStatus } from '@filanodev/paygate-core'
 
 let _paygateClient: PayGateClient | null = null
 

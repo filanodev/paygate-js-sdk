@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import PayGatePlugin from '@filano/paygate-vue'
+import PayGatePlugin from '@filanodev/paygate-vue'
 import App from './App.vue'
 
 const app = createApp(App)

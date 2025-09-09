@@ -4,7 +4,7 @@ import { usePayGate, usePaymentInitiation, usePaymentStatus } from '../composabl
 import { PayGatePlugin } from '../plugin'
 
 // Mock the core client
-vi.mock('@filano/paygate-core', () => ({
+vi.mock('@filanodev/paygate-core', () => ({
   PayGateClient: vi.fn().mockImplementation(() => ({
     initiatePayment: vi.fn(),
     checkStatus: vi.fn(),

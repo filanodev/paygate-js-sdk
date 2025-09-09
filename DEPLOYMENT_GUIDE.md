@@ -87,11 +87,11 @@ pnpm changeset status
 
 ## 📦 Packages à Publier
 
-1. **@filano/paygate-core** (v0.1.0)
-2. **@filano/paygate-react** (v0.1.0)  
-3. **@filano/paygate-vue** (v0.1.0)
-4. **@filano/paygate-nuxt** (v1.0.0)
-5. **@filano/paygate-next** (v0.1.0)
+1. **@filanodev/paygate-core** (v0.1.0)
+2. **@filanodev/paygate-react** (v0.1.0)  
+3. **@filanodev/paygate-vue** (v0.1.0)
+4. **@filanodev/paygate-nuxt** (v1.0.0)
+5. **@filanodev/paygate-next** (v0.1.0)
 
 ## 🌐 URLs Finales
 
@@ -104,7 +104,7 @@ Une fois publié :
 ## 🎉 Post-Publication
 
 1. Vérifiez que tous les packages sont disponibles sur NPM
-2. Testez l'installation : `npm install @filano/paygate-core`
+2. Testez l'installation : `npm install @filanodev/paygate-core`
 3. Créez des releases GitHub avec les notes de version
 4. Annoncez sur les communautés développeurs
 

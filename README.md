@@ -1,6 +1,6 @@
 # PayGate JavaScript SDK
 
-[![npm version](https://img.shields.io/npm/v/@filano/paygate-core.svg)](https://www.npmjs.com/package/@filano/paygate-core)
+[![npm version](https://img.shields.io/npm/v/@filanodev/paygate-core.svg)](https://www.npmjs.com/package/@filanodev/paygate-core)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://github.com/filano/paygate-js-sdk/workflows/CI/badge.svg)](https://github.com/filano/paygate-js-sdk/actions)
 
@@ -23,11 +23,11 @@ SDK JavaScript moderne et complet pour intégrer **PayGateGlobal** dans vos appl
 
 | Package | Description | Version |
 |---------|-------------|---------|
-| [@filano/paygate-core](./packages/core) | Client JavaScript de base | ![npm](https://img.shields.io/npm/v/@filano/paygate-core) |
-| [@filano/paygate-react](./packages/react) | Hooks et composants React | ![npm](https://img.shields.io/npm/v/@filano/paygate-react) |
-| [@filano/paygate-vue](./packages/vue) | Composables et plugin Vue | ![npm](https://img.shields.io/npm/v/@filano/paygate-vue) |
-| [@filano/paygate-nuxt](./packages/nuxt) | Module Nuxt 3/4 | ![npm](https://img.shields.io/npm/v/@filano/paygate-nuxt) |
-| [@filano/paygate-next](./packages/next) | Plugin Next.js 12-15 | ![npm](https://img.shields.io/npm/v/@filano/paygate-next) |
+| [@filanodev/paygate-core](./packages/core) | Client JavaScript de base | ![npm](https://img.shields.io/npm/v/@filanodev/paygate-core) |
+| [@filanodev/paygate-react](./packages/react) | Hooks et composants React | ![npm](https://img.shields.io/npm/v/@filanodev/paygate-react) |
+| [@filanodev/paygate-vue](./packages/vue) | Composables et plugin Vue | ![npm](https://img.shields.io/npm/v/@filanodev/paygate-vue) |
+| [@filanodev/paygate-nuxt](./packages/nuxt) | Module Nuxt 3/4 | ![npm](https://img.shields.io/npm/v/@filanodev/paygate-nuxt) |
+| [@filanodev/paygate-next](./packages/next) | Plugin Next.js 12-15 | ![npm](https://img.shields.io/npm/v/@filanodev/paygate-next) |
 
 ## 🚀 Démarrage rapide
 
@@ -37,19 +37,19 @@ Choisissez le package adapté à votre framework :
 
 ```bash
 # JavaScript pur / Node.js
-npm install @filano/paygate-core
+npm install @filanodev/paygate-core
 
 # React
-npm install @filano/paygate-react
+npm install @filanodev/paygate-react
 
 # Vue.js
-npm install @filano/paygate-vue
+npm install @filanodev/paygate-vue
 
 # Nuxt 3/4
-npm install @filano/paygate-nuxt
+npm install @filanodev/paygate-nuxt
 
 # Next.js
-npm install @filano/paygate-next
+npm install @filanodev/paygate-next
 ```
 
 ### Configuration
@@ -65,7 +65,7 @@ PAYGATE_TOKEN=your-paygate-token
 <summary><strong>JavaScript Core</strong></summary>
 
 ```js
-import { PayGateClient } from '@filano/paygate-core'
+import { PayGateClient } from '@filanodev/paygate-core'
 
 const client = new PayGateClient({
   authToken: process.env.PAYGATE_TOKEN
@@ -88,7 +88,7 @@ console.log('Référence:', payment.txReference)
 <summary><strong>React</strong></summary>
 
 ```jsx
-import { PayGateProvider, usePayGate } from '@filano/paygate-react'
+import { PayGateProvider, usePayGate } from '@filanodev/paygate-react'
 
 function App() {
   return (
@@ -131,7 +131,7 @@ function PaymentComponent() {
 </template>
 
 <script setup>
-import { usePayGate } from '@filano/paygate-vue'
+import { usePayGate } from '@filanodev/paygate-vue'
 
 const { initiatePayment, loading } = usePayGate()
 
@@ -154,7 +154,7 @@ const handlePayment = async () => {
 ```ts
 // nuxt.config.ts
 export default defineNuxtConfig({
-  modules: ['@filano/paygate-nuxt'],
+  modules: ['@filanodev/paygate-nuxt'],
   paygate: {
     authToken: process.env.PAYGATE_TOKEN
   }
@@ -191,7 +191,7 @@ const handlePayment = async () => {
 
 ```tsx
 // app/layout.tsx
-import { PayGateProvider } from '@filano/paygate-next/client'
+import { PayGateProvider } from '@filanodev/paygate-next/client'
 
 export default function Layout({ children }) {
   return (
@@ -205,7 +205,7 @@ export default function Layout({ children }) {
 ```tsx
 // app/page.tsx
 'use client'
-import { usePayGate } from '@filano/paygate-next/client'
+import { usePayGate } from '@filanodev/paygate-next/client'
 
 export default function Page() {
   const { initiatePayment, loading } = usePayGate()
@@ -289,7 +289,7 @@ pnpm test
 pnpm test:coverage
 
 # Tests spécifiques à un package
-pnpm test --filter @filano/paygate-react
+pnpm test --filter @filanodev/paygate-react
 ```
 
 ## 🔄 Développement

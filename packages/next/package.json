@@ -1,5 +1,5 @@
 {
-  "name": "@filano/paygate-next",
+  "name": "@filanodev/paygate-next",
   "version": "1.0.0",
   "description": "Plugin Next.js pour l'intégration de PayGateGlobal - Support FLOOZ et T-Money",
   "type": "module",
@@ -35,7 +35,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@filano/paygate-core": "workspace:*"
+    "@filanodev/paygate-core": "workspace:*"
   },
   "peerDependencies": {
     "next": "^12.0.0 || ^13.0.0 || ^14.0.0 || ^15.0.0",

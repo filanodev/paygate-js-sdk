@@ -1,8 +1,8 @@
 'use client'
 
 import React, { createContext, useContext, useMemo, ReactNode } from 'react'
-import { PayGateClient } from '@filano/paygate-core'
-import type { PayGateConfig } from '@filano/paygate-core'
+import { PayGateClient } from '@filanodev/paygate-core'
+import type { PayGateConfig } from '@filanodev/paygate-core'
 
 export interface PayGateProviderProps extends PayGateConfig {
   children: ReactNode

@@ -65,7 +65,7 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue'
-import { PaymentForm, StatusChecker } from '@filano/paygate-vue'
+import { PaymentForm, StatusChecker } from '@filanodev/paygate-vue'
 import ComposableDemo from './components/ComposableDemo.vue'
 import OptionsApiDemo from './components/OptionsApiDemo.vue'
 

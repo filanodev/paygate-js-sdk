@@ -8,7 +8,7 @@ import {
 } from '../server/utils'
 
 // Mock the core client
-vi.mock('@filano/paygate-core', () => ({
+vi.mock('@filanodev/paygate-core', () => ({
   PayGateClient: vi.fn().mockImplementation(() => ({
     initiatePayment: vi.fn(),
     checkStatus: vi.fn(),

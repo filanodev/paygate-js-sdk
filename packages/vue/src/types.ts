@@ -1,4 +1,4 @@
-import type { PayGateConfig } from '@filano/paygate-core'
+import type { PayGateConfig } from '@filanodev/paygate-core'
 
 export interface PayGatePluginOptions extends PayGateConfig {
   // Options spécifiques au plugin Vue

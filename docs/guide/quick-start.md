@@ -6,23 +6,23 @@ Commencez à utiliser PayGate SDK en moins de 5 minutes !
 
 ::: code-group
 ```bash [React]
-npm install @filano/paygate-react
+npm install @filanodev/paygate-react
 ```
 
 ```bash [Vue.js]
-npm install @filano/paygate-vue
+npm install @filanodev/paygate-vue
 ```
 
 ```bash [Nuxt]
-npm install @filano/paygate-nuxt
+npm install @filanodev/paygate-nuxt
 ```
 
 ```bash [Next.js]
-npm install @filano/paygate-next
+npm install @filanodev/paygate-next
 ```
 
 ```bash [JavaScript Pur]
-npm install @filano/paygate-core
+npm install @filanodev/paygate-core
 ```
 :::
 
@@ -44,7 +44,7 @@ Créez votre compte sur [PayGateGlobal](https://paygateglobal.com/) pour obtenir
 
 ::: code-group
 ```jsx [App.jsx]
-import { PayGateProvider } from '@filano/paygate-react'
+import { PayGateProvider } from '@filanodev/paygate-react'
 import PaymentButton from './PaymentButton'
 
 function App() {
@@ -61,7 +61,7 @@ export default App
 ```
 
 ```jsx [PaymentButton.jsx]
-import { usePayGate } from '@filano/paygate-react'
+import { usePayGate } from '@filanodev/paygate-react'
 
 function PaymentButton() {
   const { initiatePayment, loading, lastPayment, error } = usePayGate()
@@ -106,7 +106,7 @@ export default PaymentButton
 ::: code-group
 ```js [main.js]
 import { createApp } from 'vue'
-import { PayGatePlugin } from '@filano/paygate-vue'
+import { PayGatePlugin } from '@filanodev/paygate-vue'
 import App from './App.vue'
 
 const app = createApp(App)
@@ -138,7 +138,7 @@ app.mount('#app')
 </template>
 
 <script setup>
-import { usePayGate } from '@filano/paygate-vue'
+import { usePayGate } from '@filanodev/paygate-vue'
 
 const { initiatePayment, loading, lastPayment, error } = usePayGate()
 
@@ -164,7 +164,7 @@ const handlePayment = async () => {
 ::: code-group
 ```ts [nuxt.config.ts]
 export default defineNuxtConfig({
-  modules: ['@filano/paygate-nuxt'],
+  modules: ['@filanodev/paygate-nuxt'],
   
   paygate: {
     authToken: process.env.PAYGATE_TOKEN,
@@ -216,7 +216,7 @@ const handlePayment = async () => {
 
 ::: code-group
 ```tsx [app/layout.tsx]
-import { PayGateProvider } from '@filano/paygate-next/client'
+import { PayGateProvider } from '@filanodev/paygate-next/client'
 
 export default function RootLayout({
   children
@@ -240,7 +240,7 @@ export default function RootLayout({
 ```tsx [app/page.tsx]
 'use client'
 
-import { usePayGate } from '@filano/paygate-next/client'
+import { usePayGate } from '@filanodev/paygate-next/client'
 
 export default function HomePage() {
   const { initiatePayment, loading, lastPayment, error } = usePayGate()
@@ -283,7 +283,7 @@ export default function HomePage() {
 ### JavaScript Pur
 
 ```js
-import { PayGateClient } from '@filano/paygate-core'
+import { PayGateClient } from '@filanodev/paygate-core'
 
 const client = new PayGateClient({
   authToken: 'your-paygate-token',
@@ -356,7 +356,7 @@ const checkPaymentStatus = async (txReference) => {
 
 ::: code-group
 ```jsx [React]
-import { PaymentForm } from '@filano/paygate-react'
+import { PaymentForm } from '@filanodev/paygate-react'
 
 function CheckoutPage() {
   const handleSuccess = (result) => {
@@ -391,7 +391,7 @@ function CheckoutPage() {
 </template>
 
 <script setup>
-import { PaymentForm } from '@filano/paygate-vue'
+import { PaymentForm } from '@filanodev/paygate-vue'
 
 const handleSuccess = (result) => {
   console.log('Paiement réussi:', result.txReference)
@@ -408,7 +408,7 @@ const handleError = (error) => {
 
 ::: code-group
 ```jsx [React]
-import { StatusChecker } from '@filano/paygate-react'
+import { StatusChecker } from '@filanodev/paygate-react'
 
 function StatusPage() {
   const handleStatusUpdate = (status) => {
@@ -435,7 +435,7 @@ function StatusPage() {
 </template>
 
 <script setup>
-import { StatusChecker } from '@filano/paygate-vue'
+import { StatusChecker } from '@filanodev/paygate-vue'
 
 const handleStatusUpdate = (status) => {
   console.log('Nouveau statut:', status)

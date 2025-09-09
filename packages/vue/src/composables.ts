@@ -9,7 +9,7 @@ import {
   type PaymentUrlResponse,
   type PaymentStatus,
   type Balance
-} from '@filano/paygate-core'
+} from '@filanodev/paygate-core'
 import type { UsePayGateState } from './types'
 
 export const PAYGATE_CLIENT_KEY = Symbol('paygate-client')

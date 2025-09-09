@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { PayGateClient, PayGateError } from '@filano/paygate-core'
+import { PayGateClient, PayGateError } from '@filanodev/paygate-core'
 import type { 
   PayGateConfig,
   InitiatePaymentParams,
@@ -7,7 +7,7 @@ import type {
   PaymentStatus,
   DisburseParams,
   Balance
-} from '@filano/paygate-core'
+} from '@filanodev/paygate-core'
 
 /**
  * Configuration par défaut pour les API routes

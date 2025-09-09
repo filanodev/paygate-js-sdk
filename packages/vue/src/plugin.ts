@@ -1,5 +1,5 @@
 import type { App } from 'vue'
-import { PayGateClient } from '@filano/paygate-core'
+import { PayGateClient } from '@filanodev/paygate-core'
 import type { PayGatePluginOptions } from './types'
 import { PAYGATE_CLIENT_KEY } from './composables'
 

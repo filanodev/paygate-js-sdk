@@ -8,7 +8,7 @@ import {
   type PaymentUrlResponse,
   type PaymentStatus,
   type Balance
-} from '@filano/paygate-core'
+} from '@filanodev/paygate-core'
 import { usePayGateContext } from './context'
 import type { UsePayGateState } from './types'
 

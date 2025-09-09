@@ -5,7 +5,7 @@ import { PayGateProvider } from '../context'
 import { usePayGate, usePaymentInitiation, usePaymentStatus } from '../hooks'
 
 // Mock the core client
-vi.mock('@filano/paygate-core', () => ({
+vi.mock('@filanodev/paygate-core', () => ({
   PayGateClient: vi.fn().mockImplementation(() => ({
     initiatePayment: vi.fn(),
     checkStatus: vi.fn(),

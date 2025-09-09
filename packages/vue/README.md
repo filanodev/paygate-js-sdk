@@ -1,6 +1,6 @@
-# @filano/paygate-vue
+# @filanodev/paygate-vue
 
-[![npm version](https://img.shields.io/npm/v/@filano/paygate-vue.svg)](https://www.npmjs.com/package/@filano/paygate-vue)
+[![npm version](https://img.shields.io/npm/v/@filanodev/paygate-vue.svg)](https://www.npmjs.com/package/@filanodev/paygate-vue)
 
 Plugin Vue.js pour l'intégration de PayGateGlobal avec composables et composants - Support FLOOZ et T-Money.
 
@@ -9,11 +9,11 @@ Plugin Vue.js pour l'intégration de PayGateGlobal avec composables et composant
 ## Installation
 
 ```bash
-npm install @filano/paygate-vue
+npm install @filanodev/paygate-vue
 # ou
-yarn add @filano/paygate-vue
+yarn add @filanodev/paygate-vue
 # ou
-pnpm add @filano/paygate-vue
+pnpm add @filanodev/paygate-vue
 ```
 
 ## Configuration
@@ -23,7 +23,7 @@ pnpm add @filano/paygate-vue
 ```javascript
 // main.js
 import { createApp } from 'vue'
-import PayGatePlugin from '@filano/paygate-vue'
+import PayGatePlugin from '@filanodev/paygate-vue'
 import App from './App.vue'
 
 const app = createApp(App)
@@ -41,7 +41,7 @@ app.mount('#app')
 ```javascript
 // main.js
 import { createApp } from 'vue'
-import { createPayGate } from '@filano/paygate-vue'
+import { createPayGate } from '@filanodev/paygate-vue'
 import App from './App.vue'
 
 const app = createApp(App)
@@ -76,7 +76,7 @@ app.mount('#app')
 </template>
 
 <script setup>
-import { usePayGate } from '@filano/paygate-vue'
+import { usePayGate } from '@filanodev/paygate-vue'
 
 const { 
   initiatePayment, 
@@ -102,7 +102,7 @@ const handlePayment = async () => {
 
 ```vue
 <script setup>
-import { usePaymentInitiation } from '@filano/paygate-vue'
+import { usePaymentInitiation } from '@filanodev/paygate-vue'
 
 const { 
   initiate, 
@@ -156,7 +156,7 @@ const handlePayment = async () => {
 
 <script setup>
 import { ref } from 'vue'
-import { usePaymentStatus } from '@filano/paygate-vue'
+import { usePaymentStatus } from '@filanodev/paygate-vue'
 
 const reference = ref('')
 
@@ -192,7 +192,7 @@ Formulaire de paiement complet avec validation :
 </template>
 
 <script setup>
-import { PaymentForm } from '@filano/paygate-vue'
+import { PaymentForm } from '@filanodev/paygate-vue'
 
 const onPaymentSuccess = (result) => {
   console.log('Paiement réussi:', result)
@@ -220,7 +220,7 @@ Composant pour vérifier les statuts :
 </template>
 
 <script setup>
-import { StatusChecker } from '@filano/paygate-vue'
+import { StatusChecker } from '@filanodev/paygate-vue'
 
 const onStatusUpdate = (status) => {
   console.log('Nouveau statut:', status)
@@ -278,7 +278,7 @@ import type {
   PayGateNetwork,
   InitiatePaymentParams,
   PaymentStatus 
-} from '@filano/paygate-vue'
+} from '@filanodev/paygate-vue'
 ```
 
 ## API des composables
@@ -347,7 +347,7 @@ const {
 
 ```vue
 <script setup>
-import { usePayGate, PayGateError } from '@filano/paygate-vue'
+import { usePayGate, PayGateError } from '@filanodev/paygate-vue'
 
 const { initiatePayment } = usePayGate()
 

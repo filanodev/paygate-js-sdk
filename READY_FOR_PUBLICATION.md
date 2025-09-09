@@ -8,7 +8,7 @@ Le SDK PayGateGlobal JavaScript est **100% prêt** pour la publication sur NPM e
 
 ### ✅ **Problème `changelogs@^3.3.2` - RÉSOLU**
 - ❌ **Avant** : Dépendance invalide causant des erreurs d'installation
-- ✅ **Après** : Dépendance supprimée du package `@filano/paygate-nuxt`
+- ✅ **Après** : Dépendance supprimée du package `@filanodev/paygate-nuxt`
 - 🔧 **Action** : Modifié `packages/nuxt/package.json`
 
 ### ✅ **Permissions WSL - CONTOURNÉES**
@@ -41,11 +41,11 @@ Push → Test → Build → Publish → Release
 
 | Package | Status | Version | Prêt |
 |---------|--------|---------|------|
-| @filano/paygate-core | ✅ | 0.1.0 | 🟢 |
-| @filano/paygate-react | ✅ | 0.1.0 | 🟢 |
-| @filano/paygate-vue | ✅ | 0.1.0 | 🟢 |
-| @filano/paygate-nuxt | ✅ | 1.0.0 | 🟢 |
-| @filano/paygate-next | ✅ | 0.1.0 | 🟢 |
+| @filanodev/paygate-core | ✅ | 0.1.0 | 🟢 |
+| @filanodev/paygate-react | ✅ | 0.1.0 | 🟢 |
+| @filanodev/paygate-vue | ✅ | 0.1.0 | 🟢 |
+| @filanodev/paygate-nuxt | ✅ | 1.0.0 | 🟢 |
+| @filanodev/paygate-next | ✅ | 0.1.0 | 🟢 |
 
 ## 🎯 **ÉTAPES RESTANTES**
 

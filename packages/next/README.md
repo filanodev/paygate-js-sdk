@@ -1,6 +1,6 @@
-# @filano/paygate-next
+# @filanodev/paygate-next
 
-[![npm version](https://img.shields.io/npm/v/@filano/paygate-next.svg)](https://www.npmjs.com/package/@filano/paygate-next)
+[![npm version](https://img.shields.io/npm/v/@filanodev/paygate-next.svg)](https://www.npmjs.com/package/@filanodev/paygate-next)
 
 Plugin Next.js pour l'intégration de PayGateGlobal - Support FLOOZ et T-Money.
 
@@ -19,11 +19,11 @@ Plugin Next.js pour l'intégration de PayGateGlobal - Support FLOOZ et T-Money.
 ## Installation
 
 ```bash
-npm install @filano/paygate-next
+npm install @filanodev/paygate-next
 # ou
-yarn add @filano/paygate-next
+yarn add @filanodev/paygate-next
 # ou  
-pnpm add @filano/paygate-next
+pnpm add @filanodev/paygate-next
 ```
 
 ## Configuration
@@ -40,7 +40,7 @@ PAYGATE_TOKEN=your-paygate-token-here
 
 ```tsx
 // app/layout.tsx
-import { PayGateProvider } from '@filano/paygate-next/client'
+import { PayGateProvider } from '@filanodev/paygate-next/client'
 
 export default function RootLayout({
   children,
@@ -67,7 +67,7 @@ export default function RootLayout({
 ```tsx
 // pages/_app.tsx
 import type { AppProps } from 'next/app'
-import { PayGateProvider } from '@filano/paygate-next/client'
+import { PayGateProvider } from '@filanodev/paygate-next/client'
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -89,7 +89,7 @@ export default function App({ Component, pageProps }: AppProps) {
 // app/payment/page.tsx
 'use client'
 
-import { usePayGate } from '@filano/paygate-next/client'
+import { usePayGate } from '@filanodev/paygate-next/client'
 
 export default function PaymentPage() {
   const { 
@@ -145,7 +145,7 @@ export default function PaymentPage() {
 // app/checkout/page.tsx
 'use client'
 
-import { PaymentForm } from '@filano/paygate-next/client'
+import { PaymentForm } from '@filanodev/paygate-next/client'
 import { useRouter } from 'next/navigation'
 
 export default function CheckoutPage() {
@@ -184,7 +184,7 @@ export default function CheckoutPage() {
 // app/payment/[reference]/page.tsx
 'use client'
 
-import { usePaymentStatus } from '@filano/paygate-next/client'
+import { usePaymentStatus } from '@filanodev/paygate-next/client'
 import { useParams } from 'next/navigation'
 
 export default function PaymentStatusPage() {
@@ -244,7 +244,7 @@ export default function PaymentStatusPage() {
 ```typescript
 // app/api/payments/initiate/route.ts
 import { NextRequest } from 'next/server'
-import { createInitiatePaymentHandler } from '@filano/paygate-next/server'
+import { createInitiatePaymentHandler } from '@filanodev/paygate-next/server'
 
 const handler = createInitiatePaymentHandler({
   authToken: process.env.PAYGATE_TOKEN!
@@ -258,7 +258,7 @@ export async function POST(request: NextRequest) {
 ```typescript
 // app/api/payments/status/[reference]/route.ts
 import { NextRequest } from 'next/server'
-import { createStatusHandler } from '@filano/paygate-next/server'
+import { createStatusHandler } from '@filanodev/paygate-next/server'
 
 const handler = createStatusHandler()
 
@@ -273,7 +273,7 @@ export async function GET(
 ```typescript
 // app/api/payments/balance/route.ts
 import { NextRequest } from 'next/server'
-import { createBalanceHandler } from '@filano/paygate-next/server'
+import { createBalanceHandler } from '@filanodev/paygate-next/server'
 
 const handler = createBalanceHandler()
 
@@ -287,7 +287,7 @@ export async function GET(request: NextRequest) {
 ```typescript
 // pages/api/payments/initiate.ts
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { serverInitiatePayment, validatePaymentData } from '@filano/paygate-next/server'
+import { serverInitiatePayment, validatePaymentData } from '@filanodev/paygate-next/server'
 
 export default async function handler(
   req: NextApiRequest,
@@ -317,7 +317,7 @@ export default async function handler(
 ```typescript
 // pages/api/payments/status/[reference].ts
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { serverCheckPaymentStatus } from '@filano/paygate-next/server'
+import { serverCheckPaymentStatus } from '@filanodev/paygate-next/server'
 
 export default async function handler(
   req: NextApiRequest,
@@ -349,7 +349,7 @@ export default async function handler(
 ```typescript
 // app/api/webhooks/paygate/route.ts
 import { NextRequest, NextResponse } from 'next/server'
-import { createWebhookHandler } from '@filano/paygate-next/server'
+import { createWebhookHandler } from '@filanodev/paygate-next/server'
 
 const webhookHandler = createWebhookHandler(
   async (payload) => {
@@ -387,7 +387,7 @@ export async function POST(request: NextRequest) {
 
 ```tsx
 // app/orders/[id]/page.tsx
-import { serverCheckPaymentStatus } from '@filano/paygate-next/server'
+import { serverCheckPaymentStatus } from '@filanodev/paygate-next/server'
 
 interface Props {
   params: { id: string }
@@ -426,7 +426,7 @@ export default async function OrderPage({ params }: Props) {
 // app/payment/actions.ts
 'use server'
 
-import { serverInitiatePayment } from '@filano/paygate-next/server'
+import { serverInitiatePayment } from '@filanodev/paygate-next/server'
 import { revalidatePath } from 'next/cache'
 
 export async function processPayment(formData: FormData) {
@@ -462,7 +462,7 @@ export async function processPayment(formData: FormData) {
 ```typescript
 // middleware.ts
 import { NextRequest, NextResponse } from 'next/server'
-import { withCors } from '@filano/paygate-next/server'
+import { withCors } from '@filanodev/paygate-next/server'
 
 const corsHandler = withCors(['https://your-domain.com'])
 
@@ -484,7 +484,7 @@ export const config = {
 
 ```typescript
 // lib/paygate.ts
-import { createPayGateApiClient, ensurePayGateConfig } from '@filano/paygate-next/server'
+import { createPayGateApiClient, ensurePayGateConfig } from '@filanodev/paygate-next/server'
 
 // Vérifier la configuration au démarrage
 ensurePayGateConfig()
@@ -517,7 +517,7 @@ export default function HomePage() {
 'use client'
 
 import { useState } from 'react'
-import { usePayGate, PaymentForm } from '@filano/paygate-next/client'
+import { usePayGate, PaymentForm } from '@filanodev/paygate-next/client'
 
 export function PaymentDemo() {
   const [paymentReference, setPaymentReference] = useState<string | null>(null)
@@ -606,7 +606,7 @@ import type {
   PaymentResponse,
   PaymentStatus,
   WebhookPayload
-} from '@filano/paygate-next'
+} from '@filanodev/paygate-next'
 ```
 
 ## Gestion des erreurs
@@ -614,7 +614,7 @@ import type {
 ```tsx
 'use client'
 
-import { usePayGate, PayGateError } from '@filano/paygate-next/client'
+import { usePayGate, PayGateError } from '@filanodev/paygate-next/client'
 
 export default function PaymentComponent() {
   const { initiatePayment } = usePayGate()
